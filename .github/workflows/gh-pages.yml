@@ -8,24 +8,25 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     concurrency:
       group: "${{ github.workflow }}-${{ github.ref }}"
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v7
+      - name: Use Node.js 22
+        uses: actions/setup-node@v7
         with:
-          node-version: 14.x
+          node-version: 22
       - run: npm ci
       - run: npm run build:prod
-      - run: touch _site/index.html
-      - run: tree _site/
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         if: "${{ github.ref == 'refs/heads/main' }}"
         with:
           github_token: "${{ secrets.GITHUB_TOKEN }}"
           publish_dir: ./_site
+          # The action replaces gh-pages, so a CNAME that exists only on
+          # that branch is deleted. Write the live custom domain on every deploy.
+          cname: www.launchlead.uk
