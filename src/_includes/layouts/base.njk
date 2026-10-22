@@ -1,23 +1,38 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>{{ title }}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% set resolvedTitle = seoTitle if seoTitle else ((title ~ " | " ~ site.name) if title else site.name) -%}
+    {% set resolvedDescription = description if description else site.defaultDescription -%}
+    {% set canonicalUrl = site.url ~ page.url -%}
+    <title>{{ resolvedTitle }}</title>
+    <meta name="description" content="{{ resolvedDescription }}" />
+    <link rel="canonical" href="{{ canonicalUrl }}" />
+    <meta name="theme-color" content="{{ site.themeColor }}" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ site.name }}" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:title" content="{{ resolvedTitle }}" />
+    <meta property="og:description" content="{{ resolvedDescription }}" />
+    <meta property="og:url" content="{{ canonicalUrl }}" />
+    <meta property="og:image" content="{{ site.url }}{{ site.ogImage }}" />
+    <meta property="og:image:alt" content="{{ site.ogImageAlt }}" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="{{ site.ogImageWidth }}" />
+    <meta property="og:image:height" content="{{ site.ogImageHeight }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ resolvedTitle }}" />
+    <meta name="twitter:description" content="{{ resolvedDescription }}" />
+    <meta name="twitter:image" content="{{ site.url }}{{ site.ogImage }}" />
+    <meta name="twitter:image:alt" content="{{ site.ogImageAlt }}" />
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
     <style>
       .gradient {
         background: linear-gradient(90deg, #ff5a0b 0%, #ffad00 100%);
       }
     </style>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>
-      Tailwind Starter Template - Landing Page Template: Tailwind Toolbox
-    </title>
-    {# <meta name="description" content="Simple landind page" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="" /> #}
-
   </head>
 
   <body class="leading-normal tracking-normal text-white text-opacity-80 h-14 bg-gradient-to-r to-launchlead-gradient-to from-launchlead-gradient-from" style="font-family: 'Source Sans Pro', sans-serif;">
