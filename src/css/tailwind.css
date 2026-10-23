@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Keyboard focus: amber ring outside a navy ring, so it stays visible on the
+   navy page, white sections, and the orange call-to-action gradient. */
+a:focus-visible,
+button:focus-visible,
+iframe:focus {
+  outline: 3px solid #ffad00;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #001464;
+  /* The shared transition utility animates box-shadow, which would delay the ring. */
+  transition: none;
+}
+
+@media (forced-colors: active) {
+  a:focus-visible,
+  button:focus-visible,
+  iframe:focus {
+    outline: 3px solid CanvasText;
+    box-shadow: none;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  background: #fff;
+  color: #001464;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 9999px;
+  z-index: 50;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding: 0.75rem 1.25rem;
+}
+
+main:focus {
+  outline: none;
+}
+
+#content:focus,
+:target {
+  scroll-margin-top: 5.5rem;
+}
