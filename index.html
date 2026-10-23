@@ -32,7 +32,7 @@
     </style>
   </head>
 
-  <body class="leading-normal tracking-normal text-white text-opacity-80 h-14 bg-gradient-to-r to-launchlead-gradient-to from-launchlead-gradient-from" style="font-family: 'Source Sans Pro', sans-serif;">
+  <body class="leading-normal tracking-normal text-white text-opacity-80 h-14 bg-gradient-to-r to-launchlead-gradient-to from-launchlead-gradient-from" style="font-family: sans-serif;">
     <a class="skip-link" href="#content">Skip to content</a>
     <nav id="header" class="fixed w-full z-30 top-0">
   <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 p-3" style="max-width: 87rem;">
@@ -162,7 +162,7 @@
 
   <!--Right Col-->
   <div class="lg:w-2/4 ">
-    <img class="lg:mt-20 mx-auto text-center" src="/img/hero-banner-product.png" alt="Blue LaunchLead dog lead coiled next to a blue tennis ball">
+    <picture><source type="image/avif" srcset="/img/hero-banner-product-530w.avif" sizes="(min-width: 1024px) 530px, calc(100vw - 8rem)"><source type="image/webp" srcset="/img/hero-banner-product-530w.webp" sizes="(min-width: 1024px) 530px, calc(100vw - 8rem)"><img src="/img/hero-banner-product-530w.png" alt="Blue LaunchLead dog lead coiled next to a blue tennis ball" loading="eager" decoding="async" class="lg:mt-20 mx-auto text-center" fetchpriority="high" width="530" height="424"></picture>
   </div>
 </div>
 </div>
@@ -206,14 +206,41 @@
 
       <div class="w-full md:w-1/2 p-6">
         <div class="w-full md:h-64 mx-auto">
-          <iframe style="aspect-ratio: 16 / 9; width: 100%;" src="https://www.youtube.com/embed/XcwZN0Dg1bI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <div class="video-facade" style="aspect-ratio: 16 / 9; width: 100%;">
+            <button type="button" class="video-facade__button" data-youtube-id="XcwZN0Dg1bI" aria-label="Play video: See it in action">
+              <picture><source type="image/avif" srcset="/img/see-it-in-action-640w.avif 640w, /img/see-it-in-action-960w.avif 960w" sizes="(min-width: 768px) 36rem, calc(100vw - 3rem)"><source type="image/webp" srcset="/img/see-it-in-action-640w.webp 640w, /img/see-it-in-action-960w.webp 960w" sizes="(min-width: 768px) 36rem, calc(100vw - 3rem)"><img src="/img/see-it-in-action-640w.jpeg" alt="" loading="lazy" decoding="async" class="video-facade__poster" width="960" height="540" srcset="/img/see-it-in-action-640w.jpeg 640w, /img/see-it-in-action-960w.jpeg 960w" sizes="(min-width: 768px) 36rem, calc(100vw - 3rem)"></picture>
+              <span class="video-facade__play" aria-hidden="true"></span>
+            </button>
+          </div>
+          <noscript>
+            <style>.video-facade { display: none; }</style>
+            <iframe style="aspect-ratio: 16 / 9; width: 100%; border: 0;" src="https://www.youtube-nocookie.com/embed/XcwZN0Dg1bI" title="See it in action" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </noscript>
+          <script>
+            document.querySelectorAll(".video-facade__button").forEach(function (button) {
+              button.addEventListener("click", function () {
+                var id = button.getAttribute("data-youtube-id") || "";
+                if (!/^[A-Za-z0-9_-]{11}$/.test(id)) {
+                  return;
+                }
+                var iframe = document.createElement("iframe");
+                iframe.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1";
+                iframe.title = "See it in action";
+                iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+                iframe.setAttribute("allowfullscreen", "");
+                iframe.setAttribute("style", "aspect-ratio: 16 / 9; width: 100%; border: 0;");
+                button.replaceWith(iframe);
+                iframe.focus();
+              });
+            });
+          </script>
         </div>
       </div>
     </div>
 
     <div class="flex flex-wrap flex-col-reverse md:flex-row">
       <div class="w-full md:w-1/2 pt-0 sm:p-6 mt-0 sm:mt-6 items-center text-center px-16">
-        <img class="w-fit opacity-70 m-auto" src="/img/no-ball-thrower-needed.png" style="max-width: 264px;" alt="Crossed-out ball thrower icon reading No ball thrower needed">
+        <picture><source type="image/avif" srcset="/img/no-ball-thrower-needed-264w.avif 264w, /img/no-ball-thrower-needed-528w.avif 528w" sizes="264px"><source type="image/webp" srcset="/img/no-ball-thrower-needed-264w.webp 264w, /img/no-ball-thrower-needed-528w.webp 528w" sizes="264px"><img src="/img/no-ball-thrower-needed-264w.png" alt="Crossed-out ball thrower icon reading No ball thrower needed" loading="lazy" decoding="async" class="w-fit opacity-70 m-auto" style="max-width: 264px;" width="528" height="528" srcset="/img/no-ball-thrower-needed-264w.png 264w, /img/no-ball-thrower-needed-528w.png 528w" sizes="264px"></picture>
       </div>
 
       <div class="w-full md:w-1/2 p-6 mt-6">
@@ -342,8 +369,6 @@
   </div>
 </footer>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script>
       var scrollpos = window.scrollY;
