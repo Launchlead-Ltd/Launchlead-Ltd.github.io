@@ -5,6 +5,7 @@
   "main": ".eleventy.js",
   "dependencies": {
     "@11ty/eleventy": "^3.1.7",
+    "@11ty/eleventy-img": "^7.1.1",
     "@11ty/eleventy-navigation": "^1.0.5",
     "concurrently": "^10.0.6",
     "postcss": "^8.5.31",
@@ -16,7 +17,7 @@
     "serve": "eleventy --serve",
     "tw": "concurrently \"npm run s\" \"npm run bw\"",
     "bw": "tailwindcss -i ./src/css/tailwind.css -o ./_site/css/style.css --watch",
-    "build:prod": "eleventy && tailwindcss -i ./src/css/tailwind.css -o ./_site/css/style.css --minify"
+    "build:prod": "rm -rf _site && eleventy && tailwindcss -i ./src/css/tailwind.css -o ./_site/css/style.css --minify"
   },
   "repository": {
     "type": "git",

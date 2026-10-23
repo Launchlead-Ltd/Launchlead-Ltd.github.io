@@ -68,7 +68,13 @@ eleventyNavigation:
       {# text right #}
       <div class="flex flex-wrap flex-col-reverse sm:flex-row">
         <div class="w-full sm:w-1/2 p-6">
-          <img src="/img/step-1.jpg" alt="Open palm holding the metal hook, with the lead between the index and middle fingers">
+          {% image {
+            src: "/img/step-1.jpg",
+            alt: "Open palm holding the metal hook, with the lead between the index and middle fingers",
+            sizes: "(min-width: 640px) 32rem, calc(100vw - 3rem)",
+            loading: "eager",
+            fetchpriority: "high"
+          } %}
         </div>
 
         <div class="w-full sm:w-1/2 p-6">
@@ -97,14 +103,22 @@ eleventyNavigation:
         </div>
 
         <div class="w-full sm:w-1/2 p-6">
-          <img src="/img/fingerloop-3.png" alt="Middle finger pushed through the fabric finger loop, fist closed around the hook">
+          {% image {
+            src: "/img/fingerloop-3.png",
+            alt: "Middle finger pushed through the fabric finger loop, fist closed around the hook",
+            sizes: "(min-width: 640px) 32rem, calc(100vw - 3rem)"
+          } %}
         </div>
       </div>
 
       {# text right #}
       <div class="flex flex-wrap flex-col-reverse sm:flex-row">
         <div class="w-full sm:w-1/2 p-6">
-          <img src="/img/step-2.png" alt="Closed fist around the metal hook, thumb pointing up, lead hanging behind the hand">
+          {% image {
+            src: "/img/step-2.png",
+            alt: "Closed fist around the metal hook, thumb pointing up, lead hanging behind the hand",
+            sizes: "(min-width: 640px) 32rem, calc(100vw - 3rem)"
+          } %}
         </div>
 
         <div class="w-full sm:w-1/2 p-6">
@@ -132,14 +146,22 @@ eleventyNavigation:
         </div>
 
         <div class="w-full sm:w-1/2 p-6">
-          <img src="/img/step-3.png" alt="Thumb pinching the padded handle against a closed fist">
+          {% image {
+            src: "/img/step-3.png",
+            alt: "Thumb pinching the padded handle against a closed fist",
+            sizes: "(min-width: 640px) 32rem, calc(100vw - 3rem)"
+          } %}
         </div>
       </div>
 
       {# text right #}
       <div class="flex flex-wrap flex-col-reverse sm:flex-row">
         <div class="w-full sm:w-1/2 p-6">
-          <img src="/img/step-4.png" alt="Tennis ball set in the cradle while the lead is held for an underarm throw">
+          {% image {
+            src: "/img/step-4.png",
+            alt: "Tennis ball set in the cradle while the lead is held for an underarm throw",
+            sizes: "(min-width: 640px) 32rem, calc(100vw - 3rem)"
+          } %}
         </div>
 
         <div class="w-full sm:w-1/2 p-6">
@@ -168,7 +190,11 @@ eleventyNavigation:
         </div>
 
         <div class="w-full sm:w-1/2 p-6">
-          <img src="/img/luna-blue-leaves-crop.jpg" alt="Luna lying in the grass with a blue ball between her front paws">
+          {% image {
+            src: "/img/luna-blue-leaves-crop.jpg",
+            alt: "Luna lying in the grass with a blue ball between her front paws",
+            sizes: "(min-width: 640px) 32rem, calc(100vw - 3rem)"
+          } %}
         </div>
       </div>
     </div>
