@@ -35,15 +35,13 @@
     </style>
   </head>
 
-  <body class="leading-normal tracking-normal text-white text-opacity-80 h-14 bg-gradient-to-r to-launchlead-gradient-to from-launchlead-gradient-from" style="font-family: 'Source Sans Pro', sans-serif;">
+  <body class="leading-normal tracking-normal text-white text-opacity-80 h-14 bg-gradient-to-r to-launchlead-gradient-to from-launchlead-gradient-from" style="font-family: sans-serif;">
     <a class="skip-link" href="#content">Skip to content</a>
     {% include "../components/navigation.njk" %}
       <main id="content" tabindex="-1">
         {{ content | safe }}
       </main>
      {% include "../components/footer.njk" %}
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script>
       var scrollpos = window.scrollY;
