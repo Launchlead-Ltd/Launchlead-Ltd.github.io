@@ -21,8 +21,9 @@
   </head>
 
   <body class="leading-normal tracking-normal text-white text-opacity-80 h-14 bg-gradient-to-r to-launchlead-gradient-to from-launchlead-gradient-from" style="font-family: 'Source Sans Pro', sans-serif;">
+    <a class="skip-link" href="#content">Skip to content</a>
     {% include "../components/navigation.njk" %}
-      <main class="">
+      <main id="content" tabindex="-1">
         {{ content | safe }}
       </main>
      {% include "../components/footer.njk" %}
@@ -102,6 +103,18 @@
       var navMenuDiv = document.getElementById("nav-content");
       var navMenu = document.getElementById("nav-toggle");
 
+      function setMenuOpen(open) {
+        if (open) {
+          navMenuDiv.classList.remove("hidden");
+          navMenu.innerText = "Close";
+          navMenu.setAttribute("aria-expanded", "true");
+        } else {
+          navMenuDiv.classList.add("hidden");
+          navMenu.innerText = "Menu";
+          navMenu.setAttribute("aria-expanded", "false");
+        }
+      }
+
       document.onclick = check;
       function check(e) {
         var target = (e && e.target) || (event && event.srcElement);
@@ -110,24 +123,11 @@
         if (!checkParent(target, navMenuDiv)) {
           // click NOT on the menu
           if (checkParent(target, navMenu)) {
-            // click on the link
-            if (navMenuDiv.classList.contains("hidden")) {
-              navMenuDiv
-                .classList
-                .remove("hidden");
-                navMenu.innerText = 'Close';
-            } else {
-              navMenuDiv
-                .classList
-                .add("hidden");
-                navMenu.innerText = 'Menu';
-              
-            }
+            // click on the toggle
+            setMenuOpen(navMenuDiv.classList.contains("hidden"));
           } else {
             // click both outside link and outside menu, hide menu
-            navMenuDiv
-              .classList
-              .add("hidden");
+            setMenuOpen(false);
           }
         }
       }
